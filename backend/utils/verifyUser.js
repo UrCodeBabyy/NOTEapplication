@@ -1,6 +1,6 @@
 import { errorHandler } from "./error.js"
 import jwt from "jsonwebtoken"
-
+const JWT_SECRET = "Vatsal@12#2"
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.access_token
 
@@ -8,7 +8,7 @@ export const verifyToken = (req, res, next) => {
     return next(errorHandler(401, "Unauthorized"))
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+  jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) {
       return next(errorHandler(403, "Forbidden"))
     }

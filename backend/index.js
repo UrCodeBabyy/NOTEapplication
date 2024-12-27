@@ -4,10 +4,11 @@ import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 
+const MONGO_URI = "mongodb+srv://root:root@freecluster.ric1k.mongodb.net/?retryWrites=true&w=majority&appName=FreeCluster"
 dotenv.config()
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(MONGO_URI)
   .then(() => {
     console.log("Connected to mongoDB")
   })

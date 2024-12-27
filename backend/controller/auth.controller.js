@@ -31,7 +31,7 @@ export const signup = async (req, res, next) => {
     next(error)
   }
 }
-
+const JWT_SECRET = "Vatsal@12#2"
 export const signin = async (req, res, next) => {
   const { email, password } = req.body
 
@@ -48,7 +48,7 @@ export const signin = async (req, res, next) => {
       return next(errorHandler(401, "Wrong Credentials"))
     }
 
-    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET)
+    const token = jwt.sign({ id: validUser._id }, JWT_SECRET)
 
     const { password: pass, ...rest } = validUser._doc
 
